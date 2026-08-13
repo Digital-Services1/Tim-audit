@@ -89,24 +89,48 @@
     }
 /* ===== Dark theme: card highlight ===== */
 [data-theme="dark"] .card {
-  background-image: linear-gradient(180deg, hsl(0 0% 100% / .025), transparent 40px);
-  box-shadow: 0 0 0 1px hsl(0 0% 100% / .05), 0 12px 32px -16px rgba(0,0,0,.65);
+  background-image: linear-gradient(180deg, hsl(0 0% 100% / .05), transparent 40px);
+  box-shadow: 0 0 0 2px hsl(0 0% 100% / .1), 0 12px 32px -16px rgba(0,0,0,.65);
 }
 [data-theme="dark"] .card-interactive:hover {
   border-color: hsl(0 0% 100% / .14);
-  box-shadow: 0 0 0 1px hsl(0 0% 100% / .06), 0 14px 36px -16px rgba(0,0,0,.7);
+  box-shadow: 0 0 0 2px hsl(0 0% 100% / .1), 0 14px 36px -16px rgba(0,0,0,.7);
 }
 [data-theme="dark"] .topnav {
   border-bottom-color: hsl(0 0% 100% / .1);
 }
 [data-theme="dark"] .modal,
 [data-theme="dark"] .checklist-modal {
-  box-shadow: 0 0 0 1px hsl(0 0% 100% / .05), 0 24px 64px -16px rgba(0,0,0,.8);
+  box-shadow: 0 0 0 2px hsl(0 0% 100% / .05), 0 24px 64px -16px rgba(0,0,0,.8);
 }
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+
+    /* ===== Surface depth: subtle layered shadows for cards/panels ===== */
+    .card,
+    .panel {
+      box-shadow: 0 1px 2px rgba(15, 23, 42, .04), 0 1px 1px rgba(15, 23, 42, .02);
+    }
+    [data-theme="dark"] .card,
+    [data-theme="dark"] .panel {
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 1px 1px rgba(0, 0, 0, .3);
+    }
+    .card-interactive {
+      will-change: transform;
+    }
+    .card-interactive:hover,
+    .card-interactive:focus-visible {
+      box-shadow: 0 6px 20px -6px rgba(15, 23, 42, .12), 0 2px 6px -2px rgba(15, 23, 42, .06);
+    }
+    [data-theme="dark"] .card-interactive:hover,
+    [data-theme="dark"] .card-interactive:focus-visible {
+      box-shadow: 0 10px 28px -10px rgba(0, 0, 0, .75), 0 2px 6px -2px rgba(0, 0, 0, .4);
+    }
+    .btn, .period-btn, .view-btn, .theme-toggle, .modal-close, .cl-tab, .donut-legend-item, .top-item, .rank-badge {
+      cursor: pointer;
     }
 
     body {
@@ -595,18 +619,17 @@
     .insight-icon {
       width: 28px;
       height: 28px;
-      border-radius: 8px;
-      background-color: hsl(var(--primary) / .1);
       color: hsl(var(--primary));
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
+      flex-shrink: 1;
     }
 
     .insight-icon svg {
-      width: 15px;
-      height: 15px;
+      width: 24px;
+      height: 24px;
+      color: hsl(var(--primary));
     }
 
     .insight-content {
@@ -1732,6 +1755,14 @@
       border-radius: 999px;
       border: 1px solid hsl(var(--border));
       background-color: hsl(var(--card));
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cl-chip svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
     }
 
     .cl-chip b {
@@ -2260,6 +2291,16 @@
     .animate-in {
       animation: fadeIn .4s cubic-bezier(.16, 1, .3, 1) backwards;
     }
+
+    /* ===== Accessibility: respect reduced-motion preference ===== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
 </head>
 
@@ -2272,6 +2313,19 @@
   </div>
   <svg width="0" height="0" style="position:absolute">
     <defs>
+      <symbol id="i-trend-up" viewBox="0 0 24 24">
+        <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+        <polyline points="16 7 22 7 22 13" />
+      </symbol>
+      <symbol id="i-alert-triangle" viewBox="0 0 24 24">
+        <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+        <line x1="12" y1="9" x2="12" y2="13" />
+        <line x1="12" y1="17" x2="12.01" y2="17" />
+      </symbol>
+      <symbol id="i-check-circle" viewBox="0 0 24 24">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+        <polyline points="22 4 12 14.01 9 11.01" />
+      </symbol>
       <symbol id="i-shield" viewBox="0 0 24 24">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
       </symbol>
@@ -2352,8 +2406,8 @@
         <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
       </symbol>
       <symbol id="i-lightbulb" viewBox="0 0 24 24">
-        <path d="M9 18h6M10 22h4M15 11a3 3 0 0 0-6 0c0 2 2 3 2 5h4c0-2 2-3 2-5z" />
-        <path d="M12 2v1M4.2 4.2l.7.7M20 12h2M18.4 4.9l-.7.7" />
+        <path
+          d="M12 10V11.5M12 14H12.01M10 16.584V18.9996C10 20.1042 10.8954 20.9996 12 20.9996C13.1046 20.9996 14 20.1042 14 18.9996L14 16.584M12 3V4M18.3643 5.63574L17.6572 6.34285M5.63574 5.63574L6.34285 6.34285M4 12H3M21 12H20M17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12Z"/>
       </symbol>
       <symbol id="i-sun" viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="4" />
@@ -2542,7 +2596,9 @@
     function getSectionHex() { return SECTION_HEX[document.documentElement.getAttribute('data-theme') || 'light']; }
     function applyTheme(theme) {
       document.documentElement.setAttribute('data-theme', theme);
-      document.getElementById('themeIcon').setAttribute('href', theme === 'dark' ? '#i-sun' : '#i-moon');
+      const themeIcon = document.getElementById('themeIcon');
+      const iconUse = themeIcon.querySelector('use');
+      if (iconUse) iconUse.setAttribute('href', theme === 'dark' ? '#i-sun' : '#i-moon');
       localStorage.setItem('theme', theme);
       if (window.__distChart) { __distChart.destroy(); renderDistribution(); }
       renderTopDirections();
@@ -2584,7 +2640,9 @@
     async function loadData() { try { const r = await fetch(CSV_FILE); if (!r.ok) throw new Error('CSV not found'); companies = buildFromCSV(await r.text()); if (!companies.length) throw new Error('empty'); } catch (e) { companies = demoData(); } renderPeriodSelector(); const l = document.getElementById('loader'); l.classList.add('hidden'); setTimeout(() => l.style.display = 'none', 400); renderAll(); }
     function renderAll() { renderPeriodSelector(); viewCompanies = companies.filter(companyHasData); document.getElementById('totalCompaniesCount').textContent = viewCompanies.length + ' ' + plural(viewCompanies.length); renderTable(); renderTopList(); renderTopDirections(); renderDistribution(); updateKPIs(); renderInsights(); }
 
-    function updateKPIs() { const cur = { expert: 0, advanced: 0, medium: 0, basic: 0 }, prev = { expert: 0, advanced: 0, medium: 0, basic: 0 }; let hasPrev = false; viewCompanies.forEach(c => { cur[getLevel(calcScore(c)).class]++; const ps = calcPrevScore(c); if (ps !== null) { hasPrev = true; prev[getLevel(ps).class]++; } }); document.querySelectorAll('.kpi-card').forEach((card, i) => { const key = LEVEL_ORDER[i]; const vEl = card.querySelector('.kpi-value'), tEl = card.querySelector('.kpi-trend'); vEl.textContent = cur[key]; const d = hasPrev ? cur[key] - prev[key] : 0; if (d > 0) { tEl.className = 'kpi-trend up'; tEl.innerHTML = '<svg class="icon-sm"><use href="#i-arrow-up"/></svg>+' + d; } else if (d < 0) { tEl.className = 'kpi-trend down'; tEl.innerHTML = '<svg class="icon-sm"><use href="#i-arrow-down"/></svg>' + d; } else { tEl.className = 'kpi-trend stable'; tEl.innerHTML = '<svg class="icon-sm"><use href="#i-minus"/></svg>0'; } card.onclick = () => toggleKpiFilter(key); card.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleKpiFilter(key); } }; }); updateKpiActiveState(); }
+    function getSiteAssessmentFor(site, endTs) { if (!site.assessments || !site.assessments.length) return null; if (endTs === null) return site.assessments[site.assessments.length - 1]; let result = null; for (const a of site.assessments) { if (a.ts <= endTs) result = a; else break; } return result; }
+    function companyLevelFor(c, endTs) { const vals = c.sites.map(s => getSiteAssessmentFor(s, endTs)).filter(a => a !== null); if (!vals.length) return null; return getLevel(Math.round(vals.reduce((s, a) => s + a.avg, 0) / vals.length)).class; }
+    function updateKPIs() { const cur = { expert: 0, advanced: 0, medium: 0, basic: 0 }, prev = { expert: 0, advanced: 0, medium: 0, basic: 0 }; const qs = getQuartersFromData(); const curIdx = qs.findIndex(q => q.key === currentPeriodKey); const prevQ = curIdx > 0 ? qs[curIdx - 1] : null; const prevEnd = prevQ ? prevQ.endTs : null; let hasPrev = false; viewCompanies.forEach(c => { const cl = companyLevelFor(c, currentPeriod); if (cl) cur[cl]++; if (prevEnd !== null) { const pl = companyLevelFor(c, prevEnd); if (pl !== null) { hasPrev = true; prev[pl]++; } } }); document.querySelectorAll('.kpi-card').forEach((card, i) => { const key = LEVEL_ORDER[i]; const vEl = card.querySelector('.kpi-value'), tEl = card.querySelector('.kpi-trend'); vEl.textContent = cur[key]; const d = hasPrev ? cur[key] - prev[key] : 0; if (d > 0) { tEl.className = 'kpi-trend up'; tEl.innerHTML = '<svg class="icon-sm"><use href="#i-arrow-up"/></svg>+' + d; } else if (d < 0) { tEl.className = 'kpi-trend down'; tEl.innerHTML = '<svg class="icon-sm"><use href="#i-arrow-down"/></svg>' + d; } else { tEl.className = 'kpi-trend stable'; tEl.innerHTML = '<svg class="icon-sm"><use href="#i-minus"/></svg>0'; } card.onclick = () => toggleKpiFilter(key); card.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleKpiFilter(key); } }; }); updateKpiActiveState(); }
     function toggleKpiFilter(level) { if (levelFilter === level) { levelFilter = 'all'; document.getElementById('levelFilter').value = 'all'; } else { levelFilter = level; document.getElementById('levelFilter').value = level; } renderTable(); updateKpiActiveState(); }
     function updateKpiActiveState() { document.querySelectorAll('.kpi-card').forEach(card => { card.classList.toggle('filter-active', card.dataset.level === levelFilter); }); }
 
@@ -2665,7 +2723,7 @@
     function deltaChip(d) { if (d === null) return ''; if (d > 0) return '<div class="cl-delta up">▲ +' + d + ' п.п.</div>'; if (d < 0) return '<div class="cl-delta down">▼ ' + d + ' п.п.</div>'; return '<div class="cl-delta eq">— 0</div>'; }
     function blocksAnalytics(blocks) { if (!blocks.length) return null; let best = blocks[0], worst = blocks[0]; blocks.forEach(b => { if (b.pct > best.pct) best = b; if (b.pct < worst.pct) worst = b; }); return { best, worst }; }
     function openChecklist(compId, siteIdx) { const c = companies.find(x => x.id === compId); if (!c) return; const site = c.sites[siteIdx]; if (!site) return; const a = getSiteAssessment(site), p = getSitePrev(site); if (!a) { showToast('Нет данных за период', 'warning'); return; } const lv = getLevel(a.avg); let total = null; if (a.checklists) { total = { score: 0, max: 0 }; Object.values(a.checklists).forEach(cl => { total.score += cl.score; total.max += cl.max; }); total.pct = total.max ? Math.round(total.score / total.max * 100) : 0; } let html = '<div class="modal-header"><div style="flex:1;min-width:0"><div class="cl-breadcrumbs"><span class="cl-breadcrumb" onclick="closeChecklist();setTimeout(function(){openModal(\'' + c.id + '\')},200)">' + c.name + '</span><span class="cl-breadcrumb-sep">›</span><span class="cl-breadcrumb current">' + site.name + '</span><span class="cl-breadcrumb-sep">›</span><span class="cl-breadcrumb current">' + fmtShort(a.dateStr) + '</span></div><div class="modal-title" style="font-size:18px">' + site.name + '</div><div class="modal-subtitle">' + c.name + ' · ' + (a.expert || '—') + (p ? ' · prev ' + fmtShort(p.dateStr) : '') + '</div></div><div class="modal-actions"><button class="btn btn-primary btn-sm" onclick="exportChecklistCSV(\'' + c.id + '\',' + siteIdx + ')"><svg class="icon-sm"><use href="#i-download"/></svg>CSV</button><button class="modal-close" onclick="closeChecklist()"><svg class="icon"><use href="#i-close"/></svg></button></div></div><div class="checklist-scroll">'; const siteDelta = p ? a.avg - p.avg : null; html += '<div class="cl-total-bar"><div><div class="cl-total-score" style="color:' + getBarColor(a.avg) + '">' + a.avg + '% · ' + lv.name + '</div><div class="cl-total-meta">' + (total ? 'Σ ' + total.score + ' / ' + total.max + ' (' + total.pct + '%)' : 'Итог') + '</div></div>' + (siteDelta !== null ? '<div style="text-align:right"><div class="cl-total-meta">Δ к ' + fmtShort(p.dateStr) + '</div>' + deltaChip(siteDelta) + '</div>' : '') + '</div>'; html += '<div class="cl-summary">'; CL_KEYS.forEach(k => { const cl = a.checklists ? a.checklists[k] : null; const pcl = (p && p.checklists) ? p.checklists[k] : null; const d = (cl && pcl) ? cl.pct - pcl.pct : null; const val = cl ? cl.pct : a[CL_FIELD[k]]; html += '<div class="cl-card ' + CL_CARDCLS[k] + '"><div class="cl-card-title"><svg class="icon-sm" style="width:11px;height:11px"><use href="#' + (k === 'ЦИМ' ? 'i-cube' : k === 'ТИМ-специалист' ? 'i-user' : 'i-briefcase') + '"/></svg>' + CL_SHORT[k] + '</div><div class="cl-card-value" style="color:' + getBarColor(val === null ? 0 : val) + '">' + pct(val) + '</div><div class="cl-card-sub">' + (cl ? cl.score + ' / ' + cl.max : '—') + '</div>' + deltaChip(d) + '</div>'; }); html += '</div>'; if (a.checklists) { html += '<div class="cl-tabs">' + CL_KEYS.map((k, i) => '<button class="cl-tab' + (i === 0 ? ' active' : '') + '" onclick="switchClTab(this,' + i + ')">' + CL_SHORT[k] + '</button>').join('') + '</div>'; CL_KEYS.forEach((k, i) => { html += '<div class="cl-pane" style="' + (i > 0 ? 'display:none' : '') + '">' + renderChecklistPane(a.checklists[k], (p && p.checklists) ? p.checklists[k] : null) + '</div>'; }); } else { html += '<div class="cl-empty">Детальные данные недоступны для демо-данных.<br>Загрузите CSV для просмотра.</div>'; } html += '</div>'; document.getElementById('checklistContent').innerHTML = html; document.getElementById('checklistOverlay').classList.add('active'); }
-    function renderChecklistPane(cl, prevCl) { if (!cl) return '<div class="cl-empty">Чек-лист не заполнен</div>'; let html = ''; const an = blocksAnalytics(cl.blocks); if (an) { html += '<div class="cl-analytics"><span class="cl-chip">💪 <b>' + an.best.name + '</b> · ' + an.best.pct + '%</span><span class="cl-chip">⚠️ <b>' + an.worst.name + '</b> · ' + an.worst.pct + '%</span>' + (prevCl ? '<span class="cl-chip">Было: <b>' + prevCl.pct + '%</b></span>' : '') + '</div>'; } cl.blocks.forEach(b => { html += '<div class="cl-block"><div class="cl-block-header"><span class="cl-block-name">' + b.name + '</span><span class="cl-block-score" style="color:' + getBarColor(b.pct) + '">' + b.score + ' / ' + b.max + ' · ' + b.pct + '%</span></div><div class="cl-block-bar"><div style="width:' + b.pct + '%;background:' + getBarColor(b.pct) + '"></div></div><table class="cl-table"><thead><tr><th style="width:40px">№</th><th>Метрика</th><th style="width:24%">Вариант</th><th style="width:80px;text-align:center">Балл</th></tr></thead><tbody>'; b.metrics.forEach(m => { const cls = m.score >= m.max ? 'cl-score-full' : m.score > 0 ? 'cl-score-partial' : 'cl-score-zero'; html += '<tr><td style="font-family:var(--font-mono);color:hsl(var(--muted-foreground));font-size:12px">' + m.num + '</td><td><div class="cl-metric">' + m.metric + '</div><div class="cl-desc">' + m.desc + '</div></td><td><div class="cl-variant">' + m.variant + '</div></td><td class="cl-score-cell"><span class="' + cls + '">' + m.score + '/' + m.max + '</span></td></tr>'; }); html += '</tbody></table></div>'; }); return html; }
+    function renderChecklistPane(cl, prevCl) { if (!cl) return '<div class="cl-empty">Чек-лист не заполнен</div>'; let html = ''; const an = blocksAnalytics(cl.blocks); if (an) { html += '<div class="cl-analytics"><span class="cl-chip"><svg class="icon-sm" style="color:hsl(var(--success))"><use href="#i-trend-up"/></svg><b>' + an.best.name + '</b> · ' + an.best.pct + '%</span><span class="cl-chip"><svg class="icon-sm" style="color:hsl(var(--destructive))"><use href="#i-alert-triangle"/></svg><b>' + an.worst.name + '</b> · ' + an.worst.pct + '%</span>' + (prevCl ? '<span class="cl-chip"><svg class="icon-sm" style="color:hsl(var(--muted-foreground))"><use href="#i-check-circle"/></svg>Было: <b>' + prevCl.pct + '%</b></span>' : '') + '</div>'; } cl.blocks.forEach(b => { html += '<div class="cl-block"><div class="cl-block-header"><span class="cl-block-name">' + b.name + '</span><span class="cl-block-score" style="color:' + getBarColor(b.pct) + '">' + b.score + ' / ' + b.max + ' · ' + b.pct + '%</span></div><div class="cl-block-bar"><div style="width:' + b.pct + '%;background:' + getBarColor(b.pct) + '"></div></div><table class="cl-table"><thead><tr><th style="width:40px">№</th><th>Метрика</th><th style="width:24%">Вариант</th><th style="width:80px;text-align:center">Балл</th></tr></thead><tbody>'; b.metrics.forEach(m => { const cls = m.score >= m.max ? 'cl-score-full' : m.score > 0 ? 'cl-score-partial' : 'cl-score-zero'; html += '<tr><td style="font-family:var(--font-mono);color:hsl(var(--muted-foreground));font-size:12px">' + m.num + '</td><td><div class="cl-metric">' + m.metric + '</div><div class="cl-desc">' + m.desc + '</div></td><td><div class="cl-variant">' + m.variant + '</div></td><td class="cl-score-cell"><span class="' + cls + '">' + m.score + '/' + m.max + '</span></td></tr>'; }); html += '</tbody></table></div>'; }); return html; }
       function switchClTab(btn, idx) { const wrap = btn.closest('.checklist-scroll'); wrap.querySelectorAll('.cl-tab').forEach(t => t.classList.remove('active')); btn.classList.add('active'); wrap.querySelectorAll('.cl-pane').forEach((p, i) => p.style.display = (i === idx ? '' : 'none')); }
       function closeChecklist() { document.getElementById('checklistOverlay').classList.remove('active'); }
       document.getElementById('checklistOverlay').addEventListener('click', e => { if (e.target.id === 'checklistOverlay') closeChecklist(); });
