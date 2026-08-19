@@ -30,7 +30,6 @@
       --medium-soft: 330 4% 91%;
       --basic: 0 76% 45%;
       --basic-soft: 0 70% 93%;
-      /* Neumorphism: единый фон для элементов */
       --background: 240 12% 96%;
       --foreground: 240 6% 15%;
       --card: 240 12% 96%;
@@ -96,47 +95,63 @@
       --shadow-neu-sm: 4px 4px 8px rgba(0, 0, 0, .5), -4px -4px 8px rgba(255, 255, 255, .03);
       --shadow-neu-sm-inset: inset 4px 4px 8px rgba(0, 0, 0, .45), inset -4px -4px 8px rgba(255, 255, 255, .03);
     }
-/* ===== Neumorphism: фон-единица, объёмные элементы ===== */
-body {
-  background-color: hsl(var(--background));
-}
-/* Карточки/панели — выпуклые (raised) с двойной тенью */
-.card,
-.panel {
-  background-color: hsl(var(--card));
-  border: 1px solid hsl(var(--border) / .6);
-  box-shadow: var(--shadow-neu);
-}
-[data-theme="dark"] .card,
-[data-theme="dark"] .panel {
-  background-image: none;
-  box-shadow: var(--shadow-neu);
-}
-.card-interactive {
-  will-change: transform;
-}
-.card-interactive:hover,
-.card-interactive:focus-visible {
-  box-shadow: var(--shadow-neu-inset);
-  transform: translateY(-1px);
-}
-[data-theme="dark"] .card-interactive:hover,
-[data-theme="dark"] .card-interactive:focus-visible {
-  box-shadow: var(--shadow-neu-inset);
-}
-[data-theme="dark"] .topnav {
-  border-bottom-color: hsl(0 0% 100% / .04);
-}
-[data-theme="dark"] .modal,
-[data-theme="dark"] .checklist-modal {
-  box-shadow: var(--shadow-neu);
-}
+
+    body {
+      background-color: hsl(var(--background));
+    }
+
+    .card,
+    .panel {
+      background-color: hsl(var(--card));
+      border: 1px solid hsl(var(--border) / .6);
+      box-shadow: var(--shadow-neu);
+    }
+
+    [data-theme="dark"] .card,
+    [data-theme="dark"] .panel {
+      background-image: none;
+      box-shadow: var(--shadow-neu);
+    }
+
+    .card-interactive {
+      will-change: transform;
+    }
+
+    .card-interactive:hover,
+    .card-interactive:focus-visible {
+      box-shadow: var(--shadow-neu-inset);
+      transform: translateY(-1px);
+    }
+
+    [data-theme="dark"] .card-interactive:hover,
+    [data-theme="dark"] .card-interactive:focus-visible {
+      box-shadow: var(--shadow-neu-inset);
+    }
+
+    [data-theme="dark"] .topnav {
+      border-bottom-color: hsl(0 0% 100% / .04);
+    }
+
+    [data-theme="dark"] .modal,
+    [data-theme="dark"] .checklist-modal {
+      box-shadow: var(--shadow-neu);
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    .btn, .period-btn, .view-btn, .theme-toggle, .modal-close, .cl-tab, .donut-legend-item, .top-item, .rank-badge {
+
+    .btn,
+    .period-btn,
+    .view-btn,
+    .theme-toggle,
+    .modal-close,
+    .cl-tab,
+    .donut-legend-item,
+    .top-item,
+    .rank-badge {
       cursor: pointer;
     }
 
@@ -168,7 +183,6 @@ body {
       height: 14px;
     }
 
-    /* ===== Level badge icons = text color ===== */
     .level-badge svg {
       width: 11px;
       height: 11px;
@@ -205,7 +219,6 @@ body {
       box-shadow: var(--shadow-neu-sm-inset);
     }
 
-    /* ===== Section icons (ЦИМ/ТИМ/РС) = muted gray ===== */
     .section-block-label,
     .section-block-label svg,
     .section-score svg,
@@ -229,7 +242,6 @@ body {
       stroke-width: 2;
     }
 
-    /* ===== Trend arrows colored ===== */
     .kpi-trend.up,
     .kpi-trend.up svg {
       color: hsl(var(--success)) !important;
@@ -284,7 +296,6 @@ body {
       background-color: hsl(var(--muted));
     }
 
-    /* ===== Vertical Top-5 Directions Layout (thin bars + market avg line) ===== */
     .directions-container {
       padding: 12px 16px;
       display: flex;
@@ -390,7 +401,6 @@ body {
       z-index: 3;
     }
 
-    /* ярлык среднего по рынку — в шапке секции, справа */
     .vbar-avg-chip {
       margin-left: auto;
       display: inline-flex;
@@ -407,13 +417,13 @@ body {
       padding: 2px 6px;
       white-space: nowrap;
     }
+
     .vbar-avg-chip::before {
       content: '';
       width: 24px;
       border-top: 2px dashed hsl(var(--foreground) / .45);
     }
 
-    /* ===== Layout ===== */
     .app {
       max-width: 1440px;
       margin: 0 auto;
@@ -518,9 +528,11 @@ body {
       background-color: hsl(var(--secondary));
       box-shadow: var(--shadow-neu-sm);
     }
+
     .btn:hover {
       box-shadow: var(--shadow-neu-sm-inset);
     }
+
     .btn:active {
       box-shadow: var(--shadow-neu-sm-inset);
       transform: translateY(1px);
@@ -1197,6 +1209,7 @@ body {
       overflow: hidden;
       box-shadow: inset 2px 2px 4px rgba(0, 0, 0, .12), inset -2px -2px 4px rgba(255, 255, 255, .6);
     }
+
     [data-theme="dark"] .score-bar-track {
       box-shadow: inset 2px 2px 4px rgba(0, 0, 0, .5), inset -2px -2px 4px rgba(255, 255, 255, .03);
     }
@@ -1572,7 +1585,7 @@ body {
       background-color: hsl(var(--card));
       border: 1px solid hsl(var(--border) / .6);
       border-radius: calc(var(--radius) * 1.5);
-      max-width: 960px;
+      max-width: 1000px;
       width: 100%;
       max-height: 92vh;
       overflow: hidden;
@@ -1806,6 +1819,7 @@ body {
       gap: 6px;
       box-shadow: var(--shadow-neu-sm-inset);
     }
+
     .cl-chip svg {
       width: 14px;
       height: 14px;
@@ -1857,6 +1871,7 @@ body {
       margin-bottom: 8px;
       box-shadow: inset 2px 2px 4px rgba(0, 0, 0, .12), inset -2px -2px 4px rgba(255, 255, 255, .6);
     }
+
     [data-theme="dark"] .cl-block-bar {
       box-shadow: inset 2px 2px 4px rgba(0, 0, 0, .5), inset -2px -2px 4px rgba(255, 255, 255, .03);
     }
@@ -1914,9 +1929,15 @@ body {
       line-height: 1.5;
     }
 
-    .cl-variant {
+    .cl-variant,
+    .cl-note {
       font-size: 12px;
       line-height: 1.5;
+    }
+
+    .cl-note {
+      color: hsl(var(--muted-foreground));
+      font-style: italic;
     }
 
     .cl-score-cell {
@@ -1948,6 +1969,22 @@ body {
       padding: 2px 8px;
       border-radius: 5px;
       font-size: 12px;
+    }
+
+    /* Новые стили для исключенных строк */
+    .cl-row-excluded {
+      opacity: 0.55;
+      background-color: hsl(var(--muted) / .4) !important;
+    }
+
+    .cl-score-excluded {
+      color: hsl(var(--muted-foreground));
+      background-color: hsl(var(--muted));
+      padding: 2px 8px;
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      font-style: italic;
     }
 
     .cl-empty {
@@ -2224,6 +2261,7 @@ body {
       margin-top: 2px;
       box-shadow: inset 2px 2px 4px rgba(0, 0, 0, .12), inset -2px -2px 4px rgba(255, 255, 255, .6);
     }
+
     [data-theme="dark"] .dli-track {
       box-shadow: inset 2px 2px 4px rgba(0, 0, 0, .5), inset -2px -2px 4px rgba(255, 255, 255, .03);
     }
@@ -2365,9 +2403,11 @@ body {
       animation: fadeIn .4s cubic-bezier(.16, 1, .3, 1) backwards;
     }
 
-    /* ===== Accessibility: respect reduced-motion preference ===== */
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+
+      *,
+      *::before,
+      *::after {
         animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: .01ms !important;
@@ -2480,7 +2520,7 @@ body {
       </symbol>
       <symbol id="i-lightbulb" viewBox="0 0 24 24">
         <path
-          d="M12 10V11.5M12 14H12.01M10 16.584V18.9996C10 20.1042 10.8954 20.9996 12 20.9996C13.1046 20.9996 14 20.1042 14 18.9996L14 16.584M12 3V4M18.3643 5.63574L17.6572 6.34285M5.63574 5.63574L6.34285 6.34285M4 12H3M21 12H20M17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12Z"/>
+          d="M12 10V11.5M12 14H12.01M10 16.584V18.9996C10 20.1042 10.8954 20.9996 12 20.9996C13.1046 20.9996 14 20.1042 14 18.9996L14 16.584M12 3V4M18.3643 5.63574L17.6572 6.34285M5.63574 5.63574L6.34285 6.34285M4 12H3M21 12H20M17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12Z" />
       </symbol>
       <symbol id="i-sun" viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="4" />
@@ -2531,7 +2571,7 @@ body {
         <div class="insight-text" id="insightText"></div>
       </div>
     </div>
-    <div class="kpi-grid">
+    <div class="kpi-grid" id="kpiGrid">
       <div class="card card-interactive kpi-card animate-in" tabindex="0" data-level="expert" role="button">
         <div class="kpi-head">
           <div class="kpi-label">Экспертный</div>
@@ -2689,9 +2729,39 @@ body {
     function plural(n) { const m = n % 10, h = n % 100; if (m === 1 && h !== 11) return 'компания'; if (m >= 2 && m <= 4 && (h < 10 || h >= 20)) return 'компании'; return 'компаний'; }
     function showToast(msg, type) { type = type || 'success'; let c = document.getElementById('toastContainer'); if (!c) { c = document.createElement('div'); c.id = 'toastContainer'; c.className = 'toast-container'; document.body.appendChild(c); } const icons = { success: '✓', error: '✕', warning: '!' }; const t = document.createElement('div'); t.className = 'toast ' + type; t.innerHTML = '<span class="toast-icon">' + icons[type] + '</span><span>' + msg + '</span>'; c.appendChild(t); setTimeout(() => { t.style.animation = 'toastOut .3s ease forwards'; setTimeout(() => t.remove(), 320); }, 3200); }
 
-    function buildChecklists(rows) { const res = {}; rows.forEach(r => { if (!res[r.checklist]) res[r.checklist] = { score: 0, max: 0, blocksMap: {} }; const cl = res[r.checklist]; if (!cl.blocksMap[r.block]) cl.blocksMap[r.block] = { name: r.block, score: 0, max: 0, metrics: [] }; const b = cl.blocksMap[r.block]; b.metrics.push({ num: r.num, metric: r.metric, desc: r.desc, variant: r.variant, score: r.score, max: r.max }); b.score += r.score; b.max += r.max; cl.score += r.score; cl.max += r.max; }); Object.values(res).forEach(cl => { cl.pct = cl.max ? Math.round(cl.score / cl.max * 100) : 0; cl.blocks = Object.values(cl.blocksMap); cl.blocks.forEach(b => b.pct = b.max ? Math.round(b.score / b.max * 100) : 0); delete cl.blocksMap; }); return res; }
+    function buildChecklists(rows) {
+      const res = {};
+      rows.forEach(r => {
+        if (!res[r.checklist]) res[r.checklist] = { score: 0, max: 0, blocksMap: {} };
+        const cl = res[r.checklist];
+        if (!cl.blocksMap[r.block]) cl.blocksMap[r.block] = { name: r.block, score: 0, max: 0, metrics: [] };
+        const b = cl.blocksMap[r.block];
+
+        const isExcluded = r.excluded;
+        const maxScore = isExcluded ? 0 : r.max;
+
+        b.metrics.push({
+          num: r.num, metric: r.metric, desc: r.desc, variant: r.variant, note: r.note,
+          score: r.score, max: maxScore, excluded: isExcluded
+        });
+
+        if (!isExcluded) {
+          b.score += r.score;
+          b.max += maxScore;
+          cl.score += r.score;
+          cl.max += maxScore;
+        }
+      });
+      Object.values(res).forEach(cl => {
+        cl.pct = cl.max ? Math.round(cl.score / cl.max * 100) : 0;
+        cl.blocks = Object.values(cl.blocksMap);
+        cl.blocks.forEach(b => b.pct = b.max ? Math.round(b.score / b.max * 100) : 0);
+        delete cl.blocksMap;
+      });
+      return res;
+    }
     function assessmentFromChecklists(cls, dateStr, expert, ts) { const vals = []; const a = { dateStr, expert, ts, checklists: cls }; CL_KEYS.forEach(k => { const f = CL_FIELD[k]; if (cls[k]) { a[f] = cls[k].pct; vals.push(cls[k].pct); } else a[f] = null; }); a.avg = vals.length ? Math.round(vals.reduce((s, v) => s + v, 0) / vals.length) : 0; return a; }
-    function buildFromCSV(csvText) { if (csvText.charCodeAt(0) === 0xFEFF) csvText = csvText.slice(1); const parsed = Papa.parse(csvText, { header: true, delimiter: ';', skipEmptyLines: true, transformHeader: h => h.trim().toLowerCase() }); const map = {}; parsed.data.forEach(row => { const compId = (row['id компании'] || '').trim(), compName = (row['компания'] || '').trim(); const siteName = (row['площадка'] || '').trim(), checklist = (row['чек-лист'] || '').trim(); if (!compId || !compName || !siteName || !checklist) return; const dateStr = (row['дата'] || '').trim(), expert = (row['эксперт'] || '').trim(); const ts = parseRuDate(dateStr); if (!map[compId]) map[compId] = { id: compId, name: compName, sites: {} }; const comp = map[compId]; if (!comp.sites[siteName]) comp.sites[siteName] = { name: siteName, byDate: {} }; const site = comp.sites[siteName]; if (!site.byDate[ts]) site.byDate[ts] = { ts, dateStr, expert, rows: [] }; site.byDate[ts].rows.push({ checklist, block: (row['блок'] || '').trim(), num: (row['№'] || '').trim(), metric: (row['метрика'] || '').trim(), desc: (row['описание'] || '').trim(), variant: (row['выбранный вариант'] || '').trim(), score: parseInt(row['балл']) || 0, max: parseInt(row['макс. балл']) || 0 }); }); return Object.values(map).map((c, i) => { const sites = Object.values(c.sites).map(site => { const dates = Object.keys(site.byDate).map(Number).sort((a, b) => a - b); const assessments = dates.map(ts => { const raw = site.byDate[ts]; return assessmentFromChecklists(buildChecklists(raw.rows), raw.dateStr, raw.expert, raw.ts); }); return { name: site.name, assessments }; }); return { id: c.id, name: c.name, color: COLORS[i % COLORS.length], sites }; }); }
+    function buildFromCSV(csvText) { if (csvText.charCodeAt(0) === 0xFEFF) csvText = csvText.slice(1); const parsed = Papa.parse(csvText, { header: true, delimiter: ';', skipEmptyLines: true, transformHeader: h => h.trim().toLowerCase() }); const map = {}; parsed.data.forEach(row => { const compId = (row['id компании'] || '').trim(), compName = (row['компания'] || '').trim(); const siteName = (row['площадка'] || '').trim(), checklist = (row['чек-лист'] || '').trim(); if (!compId || !compName || !siteName || !checklist) return; const dateStr = (row['дата'] || '').trim(), expert = (row['эксперт'] || '').trim(); const ts = parseRuDate(dateStr); if (!map[compId]) map[compId] = { id: compId, name: compName, sites: {} }; const comp = map[compId]; if (!comp.sites[siteName]) comp.sites[siteName] = { name: siteName, byDate: {} }; const site = comp.sites[siteName]; if (!site.byDate[ts]) site.byDate[ts] = { ts, dateStr, expert, rows: [] }; site.byDate[ts].rows.push({ checklist, block: (row['блок'] || '').trim(), num: (row['№'] || '').trim(), metric: (row['метрика'] || '').trim(), desc: (row['описание'] || '').trim(), variant: (row['выбранный вариант'] || '').trim(), note: (row['примечание'] || '').trim(), score: parseInt(row['балл']) || 0, max: parseInt(row['макс. балл']) || 0, excluded: (row['исключен'] || '0').trim() === '1' }); }); return Object.values(map).map((c, i) => { const sites = Object.values(c.sites).map(site => { const dates = Object.keys(site.byDate).map(Number).sort((a, b) => a - b); const assessments = dates.map(ts => { const raw = site.byDate[ts]; return assessmentFromChecklists(buildChecklists(raw.rows), raw.dateStr, raw.expert, raw.ts); }); return { name: site.name, assessments }; }); return { id: c.id, name: c.name, color: COLORS[i % COLORS.length], sites }; }); }
     function mkAssess(dateStr, expert, cim, spec, mgr) { return { dateStr, expert, ts: parseRuDate(dateStr), cim, specialist: spec, manager: mgr, avg: Math.round((cim + spec + mgr) / 3), checklists: null }; }
     function demoData() { return [{ id: 'd1', name: 'СтройИнвест', color: '#0f172a', sites: [{ name: 'ЖК «Северный»', assessments: [mkAssess('01.07.2026 10:00', 'Демо', 85, 80, 84), mkAssess('06.08.2026 10:00', 'Демо', 92, 88, 90)] }, { name: 'ТЦ «Плаза»', assessments: [mkAssess('01.07.2026 12:00', 'Демо', 80, 78, 82), mkAssess('06.08.2026 12:00', 'Демо', 85, 82, 88)] }] }, { id: 'd2', name: 'МонолитГрупп', color: '#334155', sites: [{ name: 'БК «Олимп»', assessments: [mkAssess('28.06.2026 11:00', 'Демо', 78, 74, 72), mkAssess('05.08.2026 11:00', 'Демо', 88, 85, 82)] }] }, { id: 'd3', name: 'ТехноСтрой', color: '#64748b', sites: [{ name: 'Завод «Восток»', assessments: [mkAssess('30.06.2026 09:00', 'Демо', 48, 52, 50), mkAssess('04.08.2026 09:00', 'Демо', 45, 50, 48)] }, { name: 'Склад «Юг»', assessments: [mkAssess('30.06.2026 14:00', 'Демо', 25, 28, 30), mkAssess('04.08.2026 14:00', 'Демо', 28, 32, 35)] }] }, { id: 'd4', name: 'Городские Решения', color: '#1e293b', sites: [{ name: 'Школа №15', assessments: [mkAssess('25.06.2026 10:00', 'Демо', 64, 62, 66), mkAssess('02.08.2026 10:00', 'Демо', 70, 68, 72)] }] }, { id: 'd5', name: 'БетонПром', color: '#78716c', sites: [{ name: 'Карьер «Центральный»', assessments: [mkAssess('20.06.2026 16:00', 'Демо', 30, 26, 32), mkAssess('01.08.2026 16:00', 'Демо', 25, 20, 28)] }] }]; }
 
@@ -2719,67 +2789,66 @@ body {
     function toggleKpiFilter(level) { if (levelFilter === level) { levelFilter = 'all'; document.getElementById('levelFilter').value = 'all'; } else { levelFilter = level; document.getElementById('levelFilter').value = level; } renderTable(); updateKpiActiveState(); }
     function updateKpiActiveState() { document.querySelectorAll('.kpi-card').forEach(card => { card.classList.toggle('filter-active', card.dataset.level === levelFilter); }); }
 
-  function renderTopDirections() {
-    const container = document.getElementById('directionsContainer');
-    const hex = getSectionHex();
+    function renderTopDirections() {
+      const container = document.getElementById('directionsContainer');
+      const hex = getSectionHex();
 
-    const siteItems = [], specItems = [], mgrItems = [];
-    const allAvg = [], allSpec = [], allMgr = [];
+      const siteItems = [], specItems = [], mgrItems = [];
+      const allAvg = [], allSpec = [], allMgr = [];
 
-    viewCompanies.forEach(c => {
-      c.sites.forEach(s => {
-        const a = getSiteAssessment(s);
-        if (!a) return;
-        siteItems.push({ company: c, site: s, score: a.avg });
-        allAvg.push(a.avg);
-        if (a.specialist !== null) { specItems.push({ company: c, site: s, score: a.specialist }); allSpec.push(a.specialist); }
-        if (a.manager !== null) { mgrItems.push({ company: c, site: s, score: a.manager }); allMgr.push(a.manager); }
+      viewCompanies.forEach(c => {
+        c.sites.forEach(s => {
+          const a = getSiteAssessment(s);
+          if (!a) return;
+          siteItems.push({ company: c, site: s, score: a.avg });
+          allAvg.push(a.avg);
+          if (a.specialist !== null) { specItems.push({ company: c, site: s, score: a.specialist }); allSpec.push(a.specialist); }
+          if (a.manager !== null) { mgrItems.push({ company: c, site: s, score: a.manager }); allMgr.push(a.manager); }
+        });
       });
-    });
 
-    const avgOf = arr => arr.length ? Math.round(arr.reduce((s, v) => s + v, 0) / arr.length) : null;
-    const mSite = avgOf(allAvg), mSpec = avgOf(allSpec), mMgr = avgOf(allMgr);
+      const avgOf = arr => arr.length ? Math.round(arr.reduce((s, v) => s + v, 0) / arr.length) : null;
+      const mSite = avgOf(allAvg), mSpec = avgOf(allSpec), mMgr = avgOf(allMgr);
 
-    const topSites = siteItems.sort((a, b) => b.score - a.score).slice(0, 5);
-    const topSpecs = specItems.sort((a, b) => b.score - a.score).slice(0, 5);
-    const topMgrs = mgrItems.sort((a, b) => b.score - a.score).slice(0, 5);
+      const topSites = siteItems.sort((a, b) => b.score - a.score).slice(0, 5);
+      const topSpecs = specItems.sort((a, b) => b.score - a.score).slice(0, 5);
+      const topMgrs = mgrItems.sort((a, b) => b.score - a.score).slice(0, 5);
 
-    const maxSite = topSites.length ? Math.max(...topSites.map(x => x.score)) : 0;
-    const maxSpec = topSpecs.length ? Math.max(...topSpecs.map(x => x.score)) : 0;
-    const maxMgr = topMgrs.length ? Math.max(...topMgrs.map(x => x.score)) : 0;
+      const maxSite = topSites.length ? Math.max(...topSites.map(x => x.score)) : 0;
+      const maxSpec = topSpecs.length ? Math.max(...topSpecs.map(x => x.score)) : 0;
+      const maxMgr = topMgrs.length ? Math.max(...topMgrs.map(x => x.score)) : 0;
 
-    function buildChart(items, color, valColor, maxVal, mktVal) {
-      if (!items.length) return '<div class="cl-empty" style="padding:12px;grid-column:1/-1">Нет данных</div>';
-      let html = '';
-      items.forEach(it => {
-        const h = maxVal > 0 ? Math.round((it.score / maxVal) * 100) : 0;
-        html += '<div class="vbar-item-top">'
-          + '<div class="vbar-track-top"><div class="vbar-fill-top" data-h="' + h + '" style="height:0%;background:' + color + '">'
-          + '<span class="vbar-val-top" style="color:' + valColor + '">' + it.score + '%</span></div></div>'
-          + '<div class="vbar-name-top" title="' + it.site.name + '">' + it.site.name + '</div>'
-          + '<div class="vbar-comp-top" title="' + it.company.name + '">' + it.company.name + '</div>'
-          + '</div>';
-      });
-      // чистая пунктирная линия без текста
-      if (mktVal !== null && maxVal > 0) {
-        const r = Math.min(Math.max(mktVal / maxVal, 0), 1);
-        html += '<div class="vbar-avg-top" style="top: calc(var(--track-h) * ' + (1 - r).toFixed(4) + ')" title="Среднее по рынку: ' + mktVal + '%"></div>';
+      function buildChart(items, color, valColor, maxVal, mktVal) {
+        if (!items.length) return '<div class="cl-empty" style="padding:12px;grid-column:1/-1">Нет данных</div>';
+        let html = '';
+        items.forEach(it => {
+          const h = maxVal > 0 ? Math.round((it.score / maxVal) * 100) : 0;
+          html += '<div class="vbar-item-top">'
+            + '<div class="vbar-track-top"><div class="vbar-fill-top" data-h="' + h + '" style="height:0%;background:' + color + '">'
+            + '<span class="vbar-val-top" style="color:' + valColor + '">' + it.score + '%</span></div></div>'
+            + '<div class="vbar-name-top" title="' + it.site.name + '">' + it.site.name + '</div>'
+            + '<div class="vbar-comp-top" title="' + it.company.name + '">' + it.company.name + '</div>'
+            + '</div>';
+        });
+        if (mktVal !== null && maxVal > 0) {
+          const r = Math.min(Math.max(mktVal / maxVal, 0), 1);
+          html += '<div class="vbar-avg-top" style="top: calc(var(--track-h) * ' + (1 - r).toFixed(4) + ')" title="Среднее по рынку: ' + mktVal + '%"></div>';
+        }
+        return html;
       }
-      return html;
+
+      function sectionHTML(icon, title, inner, mktVal) {
+        const chip = (mktVal === null || mktVal === undefined) ? '' : '<span class="vbar-avg-chip">среднее по рынку ' + mktVal + '%</span>';
+        return '<div class="direction-section"><div class="direction-header"><svg class="icon-sm"><use href="#' + icon + '"/></svg>' + title + chip + '</div><div class="hbar-list-top">' + inner + '</div></div>';
+      }
+
+      container.innerHTML =
+        sectionHTML('i-building', 'Площадки (средний балл)', buildChart(topSites, hex.cim, '#ffffff', maxSite, mSite), mSite) +
+        sectionHTML('i-user', 'ТИМ-специалист', buildChart(topSpecs, hex.specialist, 'hsl(0 45% 25%)', maxSpec, mSpec), mSpec) +
+        sectionHTML('i-briefcase', 'Руководитель строительства', buildChart(topMgrs, hex.manager, 'hsl(240 6% 12%)', maxMgr, mMgr), mMgr);
+
+      setTimeout(() => { container.querySelectorAll('.vbar-fill-top').forEach(b => b.style.height = b.dataset.h + '%'); }, 50);
     }
-
-    function sectionHTML(icon, title, inner, mktVal) {
-      const chip = (mktVal === null || mktVal === undefined) ? '' : '<span class="vbar-avg-chip">среднее по рынку ' + mktVal + '%</span>';
-      return '<div class="direction-section"><div class="direction-header"><svg class="icon-sm"><use href="#' + icon + '"/></svg>' + title + chip + '</div><div class="hbar-list-top">' + inner + '</div></div>';
-    }
-
-    container.innerHTML =
-      sectionHTML('i-building', 'Площадки (средний балл)', buildChart(topSites, hex.cim, '#ffffff', maxSite, mSite), mSite) +
-      sectionHTML('i-user', 'ТИМ-специалист', buildChart(topSpecs, hex.specialist, 'hsl(0 45% 25%)', maxSpec, mSpec), mSpec) +
-      sectionHTML('i-briefcase', 'Руководитель строительства', buildChart(topMgrs, hex.manager, 'hsl(240 6% 12%)', maxMgr, mMgr), mMgr);
-
-    setTimeout(() => { container.querySelectorAll('.vbar-fill-top').forEach(b => b.style.height = b.dataset.h + '%'); }, 50);
-  }
 
     function renderTopList() { const list = document.getElementById('topList'); if (!viewCompanies.length) { list.innerHTML = '<div class="cl-empty">Нет данных</div>'; return; } const top5 = [...viewCompanies].map(c => ({ c, score: calcScore(c), sec: calcSections(c), trend: getTrend(c) })).sort((a, b) => b.score - a.score).slice(0, 5); const hex = getSectionHex(); list.innerHTML = top5.map((it, i) => { const trendCol = it.trend.diff === null ? 'hsl(var(--muted-foreground))' : it.trend.diff > 2 ? 'hsl(var(--success))' : it.trend.diff < -2 ? 'hsl(var(--destructive))' : 'hsl(var(--muted-foreground))'; const secs = [{ key: 'cim', label: 'ЦИМ', icon: 'i-cube', val: it.sec.cim, color: hex.cim }, { key: 'specialist', label: 'Спец', icon: 'i-user', val: it.sec.specialist, color: hex.specialist }, { key: 'manager', label: 'РС', icon: 'i-briefcase', val: it.sec.manager, color: hex.manager }]; const secHtml = secs.map(s => { const v = s.val === null ? 0 : s.val; return '<div class="top-sec"><div class="top-sec-header"><span class="top-sec-label"><svg class="icon-sm"><use href="#' + s.icon + '"/></svg>' + s.label + '</span><span class="top-sec-val">' + pct(s.val) + '</span></div><div class="top-sec-bar"><div style="width:' + v + '%;background:' + s.color + '"></div></div></div>'; }).join(''); return '<div class="top-item" onclick="openModal(\'' + it.c.id + '\')" tabindex="0"><div class="top-item-row"><div class="top-rank">' + (i + 1) + '</div><div class="top-info"><div class="top-name" title="' + it.c.name + '">' + it.c.name + '</div><div class="top-meta"><span>' + it.c.sites.length + ' площ.</span><span style="color:' + trendCol + ';font-weight:600">' + it.trend.value + '</span></div></div><div class="top-score"><div class="top-score-value" style="color:' + getBarColor(it.score) + '">' + it.score + '%</div><div class="top-score-label">итог</div></div></div><div class="top-sections">' + secHtml + '</div></div>'; }).join(''); }
 
@@ -2796,22 +2865,39 @@ body {
     function deltaChip(d) { if (d === null) return ''; if (d > 0) return '<div class="cl-delta up">▲ +' + d + ' п.п.</div>'; if (d < 0) return '<div class="cl-delta down">▼ ' + d + ' п.п.</div>'; return '<div class="cl-delta eq">— 0</div>'; }
     function blocksAnalytics(blocks) { if (!blocks.length) return null; let best = blocks[0], worst = blocks[0]; blocks.forEach(b => { if (b.pct > best.pct) best = b; if (b.pct < worst.pct) worst = b; }); return { best, worst }; }
     function openChecklist(compId, siteIdx) { const c = companies.find(x => x.id === compId); if (!c) return; const site = c.sites[siteIdx]; if (!site) return; const a = getSiteAssessment(site), p = getSitePrev(site); if (!a) { showToast('Нет данных за период', 'warning'); return; } const lv = getLevel(a.avg); let total = null; if (a.checklists) { total = { score: 0, max: 0 }; Object.values(a.checklists).forEach(cl => { total.score += cl.score; total.max += cl.max; }); total.pct = total.max ? Math.round(total.score / total.max * 100) : 0; } let html = '<div class="modal-header"><div style="flex:1;min-width:0"><div class="cl-breadcrumbs"><span class="cl-breadcrumb" onclick="closeChecklist();setTimeout(function(){openModal(\'' + c.id + '\')},200)">' + c.name + '</span><span class="cl-breadcrumb-sep">›</span><span class="cl-breadcrumb current">' + site.name + '</span><span class="cl-breadcrumb-sep">›</span><span class="cl-breadcrumb current">' + fmtShort(a.dateStr) + '</span></div><div class="modal-title" style="font-size:18px">' + site.name + '</div><div class="modal-subtitle">' + c.name + ' · ' + (a.expert || '—') + (p ? ' · prev ' + fmtShort(p.dateStr) : '') + '</div></div><div class="modal-actions"><button class="btn btn-primary btn-sm" onclick="exportChecklistCSV(\'' + c.id + '\',' + siteIdx + ')"><svg class="icon-sm"><use href="#i-download"/></svg>CSV</button><button class="modal-close" onclick="closeChecklist()"><svg class="icon"><use href="#i-close"/></svg></button></div></div><div class="checklist-scroll">'; const siteDelta = p ? a.avg - p.avg : null; html += '<div class="cl-total-bar"><div><div class="cl-total-score" style="color:' + getBarColor(a.avg) + '">' + a.avg + '% · ' + lv.name + '</div><div class="cl-total-meta">' + (total ? 'Σ ' + total.score + ' / ' + total.max + ' (' + total.pct + '%)' : 'Итог') + '</div></div>' + (siteDelta !== null ? '<div style="text-align:right"><div class="cl-total-meta">Δ к ' + fmtShort(p.dateStr) + '</div>' + deltaChip(siteDelta) + '</div>' : '') + '</div>'; html += '<div class="cl-summary">'; CL_KEYS.forEach(k => { const cl = a.checklists ? a.checklists[k] : null; const pcl = (p && p.checklists) ? p.checklists[k] : null; const d = (cl && pcl) ? cl.pct - pcl.pct : null; const val = cl ? cl.pct : a[CL_FIELD[k]]; html += '<div class="cl-card ' + CL_CARDCLS[k] + '"><div class="cl-card-title"><svg class="icon-sm" style="width:11px;height:11px"><use href="#' + (k === 'ЦИМ' ? 'i-cube' : k === 'ТИМ-специалист' ? 'i-user' : 'i-briefcase') + '"/></svg>' + CL_SHORT[k] + '</div><div class="cl-card-value" style="color:' + getBarColor(val === null ? 0 : val) + '">' + pct(val) + '</div><div class="cl-card-sub">' + (cl ? cl.score + ' / ' + cl.max : '—') + '</div>' + deltaChip(d) + '</div>'; }); html += '</div>'; if (a.checklists) { html += '<div class="cl-tabs">' + CL_KEYS.map((k, i) => '<button class="cl-tab' + (i === 0 ? ' active' : '') + '" onclick="switchClTab(this,' + i + ')">' + CL_SHORT[k] + '</button>').join('') + '</div>'; CL_KEYS.forEach((k, i) => { html += '<div class="cl-pane" style="' + (i > 0 ? 'display:none' : '') + '">' + renderChecklistPane(a.checklists[k], (p && p.checklists) ? p.checklists[k] : null) + '</div>'; }); } else { html += '<div class="cl-empty">Детальные данные недоступны для демо-данных.<br>Загрузите CSV для просмотра.</div>'; } html += '</div>'; document.getElementById('checklistContent').innerHTML = html; document.getElementById('checklistOverlay').classList.add('active'); }
-    function renderChecklistPane(cl, prevCl) { if (!cl) return '<div class="cl-empty">Чек-лист не заполнен</div>'; let html = ''; const an = blocksAnalytics(cl.blocks); if (an) { html += '<div class="cl-analytics"><span class="cl-chip"><svg class="icon-sm" style="color:hsl(var(--success))"><use href="#i-trend-up"/></svg><b>' + an.best.name + '</b> · ' + an.best.pct + '%</span><span class="cl-chip"><svg class="icon-sm" style="color:hsl(var(--destructive))"><use href="#i-alert-triangle"/></svg><b>' + an.worst.name + '</b> · ' + an.worst.pct + '%</span>' + (prevCl ? '<span class="cl-chip"><svg class="icon-sm" style="color:hsl(var(--muted-foreground))"><use href="#i-check-circle"/></svg>Было: <b>' + prevCl.pct + '%</b></span>' : '') + '</div>'; } cl.blocks.forEach(b => { html += '<div class="cl-block"><div class="cl-block-header"><span class="cl-block-name">' + b.name + '</span><span class="cl-block-score" style="color:' + getBarColor(b.pct) + '">' + b.score + ' / ' + b.max + ' · ' + b.pct + '%</span></div><div class="cl-block-bar"><div style="width:' + b.pct + '%;background:' + getBarColor(b.pct) + '"></div></div><table class="cl-table"><thead><tr><th style="width:40px">№</th><th>Метрика</th><th style="width:24%">Вариант</th><th style="width:80px;text-align:center">Балл</th></tr></thead><tbody>'; b.metrics.forEach(m => { const cls = m.score >= m.max ? 'cl-score-full' : m.score > 0 ? 'cl-score-partial' : 'cl-score-zero'; html += '<tr><td style="font-family:var(--font-mono);color:hsl(var(--muted-foreground));font-size:12px">' + m.num + '</td><td><div class="cl-metric">' + m.metric + '</div><div class="cl-desc">' + m.desc + '</div></td><td><div class="cl-variant">' + m.variant + '</div></td><td class="cl-score-cell"><span class="' + cls + '">' + m.score + '/' + m.max + '</span></td></tr>'; }); html += '</tbody></table></div>'; }); return html; }
-      function switchClTab(btn, idx) { const wrap = btn.closest('.checklist-scroll'); wrap.querySelectorAll('.cl-tab').forEach(t => t.classList.remove('active')); btn.classList.add('active'); wrap.querySelectorAll('.cl-pane').forEach((p, i) => p.style.display = (i === idx ? '' : 'none')); }
-      function closeChecklist() { document.getElementById('checklistOverlay').classList.remove('active'); }
-      document.getElementById('checklistOverlay').addEventListener('click', e => { if (e.target.id === 'checklistOverlay') closeChecklist(); });
+    function renderChecklistPane(cl, prevCl) {
+      if (!cl) return '<div class="cl-empty">Чек-лист не заполнен</div>';
+      let html = '';
+      const an = blocksAnalytics(cl.blocks);
+      if (an) { html += '<div class="cl-analytics"><span class="cl-chip"><svg class="icon-sm" style="color:hsl(var(--success))"><use href="#i-trend-up"/></svg><b>' + an.best.name + '</b> · ' + an.best.pct + '%</span><span class="cl-chip"><svg class="icon-sm" style="color:hsl(var(--destructive))"><use href="#i-alert-triangle"/></svg><b>' + an.worst.name + '</b> · ' + an.worst.pct + '%</span>' + (prevCl ? '<span class="cl-chip"><svg class="icon-sm" style="color:hsl(var(--muted-foreground))"><use href="#i-check-circle"/></svg>Было: <b>' + prevCl.pct + '%</b></span>' : '') + '</div>'; }
+      cl.blocks.forEach(b => {
+        html += '<div class="cl-block"><div class="cl-block-header"><span class="cl-block-name">' + b.name + '</span><span class="cl-block-score" style="color:' + getBarColor(b.pct) + '">' + b.score + ' / ' + b.max + ' · ' + b.pct + '%</span></div><div class="cl-block-bar"><div style="width:' + b.pct + '%;background:' + getBarColor(b.pct) + '"></div></div><table class="cl-table"><thead><tr><th style="width:40px">№</th><th>Метрика</th><th style="width:20%">Вариант</th><th style="width:25%">Примечание</th><th style="width:80px;text-align:center">Балл</th></tr></thead><tbody>';
+        b.metrics.forEach(m => {
+          const isExcluded = m.excluded;
+          const cls = isExcluded ? 'cl-score-excluded' : (m.score >= m.max && m.max > 0 ? 'cl-score-full' : m.score > 0 ? 'cl-score-partial' : 'cl-score-zero');
+          const rowClass = isExcluded ? 'cl-row-excluded' : '';
+          const scoreText = isExcluded ? '<span class="cl-score-excluded">Искл.</span>' : '<span class="' + cls + '">' + m.score + '/' + m.max + '</span>';
+          html += '<tr class="' + rowClass + '"><td style="font-family:var(--font-mono);color:hsl(var(--muted-foreground));font-size:12px">' + m.num + '</td><td><div class="cl-metric">' + m.metric + '</div><div class="cl-desc">' + m.desc + '</div></td><td><div class="cl-variant">' + m.variant + '</div></td><td><div class="cl-note">' + (m.note || '') + '</div></td><td class="cl-score-cell">' + scoreText + '</td></tr>';
+        });
+        html += '</tbody></table></div>';
+      });
+      return html;
+    }
+    function switchClTab(btn, idx) { const wrap = btn.closest('.checklist-scroll'); wrap.querySelectorAll('.cl-tab').forEach(t => t.classList.remove('active')); btn.classList.add('active'); wrap.querySelectorAll('.cl-pane').forEach((p, i) => p.style.display = (i === idx ? '' : 'none')); }
+    function closeChecklist() { document.getElementById('checklistOverlay').classList.remove('active'); }
+    document.getElementById('checklistOverlay').addEventListener('click', e => { if (e.target.id === 'checklistOverlay') closeChecklist(); });
 
-      function downloadCSV(csv, filename) { const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' }); const url = URL.createObjectURL(blob); const link = document.createElement('a'); link.href = url; link.download = safeName(filename) + '.csv'; document.body.appendChild(link); link.click(); document.body.removeChild(link); URL.revokeObjectURL(url); }
-      function exportChecklistCSV(compId, siteIdx) { const c = companies.find(x => x.id === compId); if (!c) return; const site = c.sites[siteIdx]; if (!site) return; const a = getSiteAssessment(site); if (!a || !a.checklists) { showToast('Нет данных для выгрузки', 'warning'); return; } const rows = [['Дата', 'Эксперт', 'ID компании', 'Компания', 'ID площадки', 'Площадка', 'Чек-лист', 'Блок', '№', 'Метрика', 'Описание', 'Выбранный вариант', 'Балл', 'Макс. балл']]; CL_KEYS.forEach(k => { const cl = a.checklists[k]; if (!cl) return; cl.blocks.forEach(b => { b.metrics.forEach(m => { rows.push([a.dateStr, a.expert || '', c.id, c.name, siteIdx + 1, site.name, k, b.name, m.num, m.metric, m.desc, m.variant, m.score, m.max]); }); }); }); const csv = rows.map(r => r.map(v => '"' + String(v).replace(/"/g, '""') + '"').join(';')).join('\r\n'); downloadCSV(csv, 'чек-лист_' + c.name + '_' + site.name + '_' + fmtShort(a.dateStr)); showToast('Чек-лист «' + site.name + '» выгружен', 'success'); }
-      function exportRating() { let data = viewCompanies.map(c => ({ ...c, score: calcScore(c), sections: calcSections(c), level: getLevel(calcScore(c)), trend: getTrend(c) })); if (searchTerm) data = data.filter(c => c.name.toLowerCase().includes(searchTerm.toLowerCase())); if (levelFilter !== 'all') data = data.filter(c => c.level.class === levelFilter); data.sort((a, b) => b.score - a.score); if (!data.length) { showToast('Нет данных для выгрузки', 'warning'); return; } const rows = [['#', 'Компания', 'Площ.', 'ЦИМ %', 'Спец %', 'РС %', 'Балл %', 'Уровень', 'Δ']]; data.forEach((c, i) => { rows.push([i + 1, c.name, c.sites.length, c.sections.cim === null ? '' : c.sections.cim, c.sections.specialist === null ? '' : c.sections.specialist, c.sections.manager === null ? '' : c.sections.manager, c.score, c.level.name, c.trend.value]); }); const csv = rows.map(r => r.map(v => '"' + String(v).replace(/"/g, '""') + '"').join(';')).join('\r\n'); const q = quarters.find(q => q.key === currentPeriodKey); downloadCSV(csv, 'рейтинг_ТИМ-аудит' + (q ? '_' + q.label.replace(/\s/g, '') : '')); showToast('Рейтинг выгружен: ' + data.length + ' ' + plural(data.length), 'success'); }
-      document.getElementById('exportRatingBtn').addEventListener('click', exportRating);
+    function downloadCSV(csv, filename) { const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' }); const url = URL.createObjectURL(blob); const link = document.createElement('a'); link.href = url; link.download = safeName(filename) + '.csv'; document.body.appendChild(link); link.click(); document.body.removeChild(link); URL.revokeObjectURL(url); }
+    function exportChecklistCSV(compId, siteIdx) { const c = companies.find(x => x.id === compId); if (!c) return; const site = c.sites[siteIdx]; if (!site) return; const a = getSiteAssessment(site); if (!a || !a.checklists) { showToast('Нет данных для выгрузки', 'warning'); return; } const rows = [['Дата', 'Эксперт', 'ID компании', 'Компания', 'ID площадки', 'Площадка', 'Чек-лист', 'Блок', '№', 'Метрика', 'Описание', 'Выбранный вариант', 'Примечание', 'Исключен', 'Балл', 'Макс. балл']]; CL_KEYS.forEach(k => { const cl = a.checklists[k]; if (!cl) return; cl.blocks.forEach(b => { b.metrics.forEach(m => { rows.push([a.dateStr, a.expert || '', c.id, c.name, siteIdx + 1, site.name, k, b.name, m.num, m.metric, m.desc, m.variant, m.note || '', m.excluded ? 1 : 0, m.score, m.max]); }); }); }); const csv = rows.map(r => r.map(v => '"' + String(v).replace(/"/g, '""') + '"').join(';')).join('\r\n'); downloadCSV(csv, 'чек-лист_' + c.name + '_' + site.name + '_' + fmtShort(a.dateStr)); showToast('Чек-лист «' + site.name + '» выгружен', 'success'); }
+    function exportRating() { let data = viewCompanies.map(c => ({ ...c, score: calcScore(c), sections: calcSections(c), level: getLevel(calcScore(c)), trend: getTrend(c) })); if (searchTerm) data = data.filter(c => c.name.toLowerCase().includes(searchTerm.toLowerCase())); if (levelFilter !== 'all') data = data.filter(c => c.level.class === levelFilter); data.sort((a, b) => b.score - a.score); if (!data.length) { showToast('Нет данных для выгрузки', 'warning'); return; } const rows = [['#', 'Компания', 'Площ.', 'ЦИМ %', 'Спец %', 'РС %', 'Балл %', 'Уровень', 'Δ']]; data.forEach((c, i) => { rows.push([i + 1, c.name, c.sites.length, c.sections.cim === null ? '' : c.sections.cim, c.sections.specialist === null ? '' : c.sections.specialist, c.sections.manager === null ? '' : c.sections.manager, c.score, c.level.name, c.trend.value]); }); const csv = rows.map(r => r.map(v => '"' + String(v).replace(/"/g, '""') + '"').join(';')).join('\r\n'); const q = quarters.find(q => q.key === currentPeriodKey); downloadCSV(csv, 'рейтинг_ТИМ-аудит' + (q ? '_' + q.label.replace(/\s/g, '') : '')); showToast('Рейтинг выгружен: ' + data.length + ' ' + plural(data.length), 'success'); }
+    document.getElementById('exportRatingBtn').addEventListener('click', exportRating);
 
-      document.addEventListener('keydown', e => { if (e.key === 'Escape') { if (document.getElementById('checklistOverlay').classList.contains('active')) closeChecklist(); else if (document.getElementById('modalOverlay').classList.contains('active')) closeModal(); } if (e.key === '/' && document.activeElement.tagName !== 'INPUT') { e.preventDefault(); document.getElementById('searchInput').focus(); } });
-      document.querySelectorAll('.view-btn').forEach(b => b.addEventListener('click', e => { document.querySelectorAll('.view-btn').forEach(x => x.classList.remove('active')); e.target.classList.add('active'); currentSort = e.target.dataset.view; renderTable(); }));
-      document.getElementById('searchInput').addEventListener('input', e => { searchTerm = e.target.value; renderTable(); });
-      document.getElementById('levelFilter').addEventListener('change', e => { levelFilter = e.target.value; renderTable(); updateKpiActiveState(); });
-      loadData();
-    </script>
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { if (document.getElementById('checklistOverlay').classList.contains('active')) closeChecklist(); else if (document.getElementById('modalOverlay').classList.contains('active')) closeModal(); } if (e.key === '/' && document.activeElement.tagName !== 'INPUT') { e.preventDefault(); document.getElementById('searchInput').focus(); } });
+    document.querySelectorAll('.view-btn').forEach(b => b.addEventListener('click', e => { document.querySelectorAll('.view-btn').forEach(x => x.classList.remove('active')); e.target.classList.add('active'); currentSort = e.target.dataset.view; renderTable(); }));
+    document.getElementById('searchInput').addEventListener('input', e => { searchTerm = e.target.value; renderTable(); });
+    document.getElementById('levelFilter').addEventListener('change', e => { levelFilter = e.target.value; renderTable(); updateKpiActiveState(); });
+    loadData();
+  </script>
 </body>
 
 </html>
